@@ -23,6 +23,27 @@
         flex: 1;
       }
     </style>
+    <!--
+      GA4 for https://gnosis.events only (G-0ZCS0F8102).
+      web.output is single, so expo export reads this file and not app/+html.tsx.
+      Keep the ID in sync with GA_MEASUREMENT_ID_DEFAULT in lib/ga.ts.
+      The script runs on gnosis.events. Other hosts, including localhost and a legacy /app build, do not load it.
+    -->
+    <script>
+      (function () {
+        var host = location.hostname;
+        if (host !== 'gnosis.events' && host !== 'www.gnosis.events') return;
+        var id = 'G-0ZCS0F8102';
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { window.dataLayer.push(arguments); };
+        window.gtag('js', new Date());
+        window.gtag('config', id);
+      })();
+    </script>
   <link rel="icon" href="/favicon.ico"/></head>
 
   <body>
@@ -30,6 +51,6 @@
     <noscript> You need to enable JavaScript to run this app. </noscript>
     <!-- The root element for your Expo app. -->
     <div id="root"></div>
-  <script src="/_expo/static/js/web/__expo-metro-runtime-8c088df87a31e4e6accd81c554ec290d.js" defer></script><script src="/_expo/static/js/web/__common-e14811e807edc71840d97e8f347e747e.js" defer></script><script src="/_expo/static/js/web/entry-909e94c8bf390707bcab266768d20e16.js" defer></script>
+  <script src="/_expo/static/js/web/__expo-metro-runtime-8c088df87a31e4e6accd81c554ec290d.js" defer></script><script src="/_expo/static/js/web/__common-68ff19ac9be8f14d001c073eb9e7eabe.js" defer></script><script src="/_expo/static/js/web/entry-6087b184901643fef43708154c65944a.js" defer></script>
 </body>
 </html>
